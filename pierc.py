@@ -7,6 +7,7 @@ class IrcWindow(object):
     """Main window."""
 
     def __init__(self, parent):
+        
         self.parent = parent
 
         # One frame to rule them all!
@@ -34,6 +35,38 @@ class IrcWindow(object):
                                  bg='purple') # remove bg color
         self.txt_entry.pack(side=tk.BOTTOM, fill=tk.X)
 
+class ServerWindow(object):
+    """Server window."""
+
+    def __init__(self, parent):
+
+        self.parent = parent
+
+        # One frame to rull them all!
+        self.frm_sauron = tk.Frame(self.parent)
+        self.frm_sauron.pack(expand=tk.YES, fill=tk.BOTH)
+
+        # Create server label.
+        tk.Label(self.frm_sauron, text='Server').pack(side=tk.TOP, anchor=tk.W)
+
+        # Create server text entry.
+        self.txt_server = tk.Text(self.frm_sauron, height=1, width=40)
+        self.txt_server.pack(side=tk.TOP, anchor=tk.W)
+
+        # Create port label.
+        tk.Label(self.frm_sauron, text='Port').pack(side=tk.TOP, anchor=tk.W)
+
+        # Create port text entry.
+        self.txt_server = tk.Text(self.frm_sauron, height=1, width=40)
+        self.txt_server.pack(side=tk.TOP, anchor=tk.W)
+
+
+# Open the server window first.
+win_server = tk.Tk()
+irc = ServerWindow(win_server)
+win_server.mainloop()
+
+# Now open the main window.
 root = tk.Tk()
 irc = IrcWindow(root)
 root.mainloop()
